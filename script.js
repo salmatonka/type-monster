@@ -8,7 +8,7 @@ const modalBackground = document.getElementById("modal-background");
 // variables
 let userText = "";
 let errorCount = 0;
-let startTime;
+let startTime= " ";
 let questionText = "";
 
 // Load and display question
@@ -135,5 +135,5 @@ setInterval(() => {
   const timeSpent = (currentTime - startTime) / 1000;
 
 
-  document.getElementById("show-time").innerHTML = `${startTime ? timeSpent : 0} seconds`;
+  document.getElementById("show-time").innerHTML = `${startTime  ? timeSpent : 0} seconds`;
 }, 1000);
