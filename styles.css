@@ -36,7 +36,7 @@ body {
 
 #display {
   height: 100px;
-  display: flex;
+  
   flex-wrap: wrap;
   align-items: center;
   padding-left: 5rem;
@@ -79,6 +79,7 @@ body {
   text-align: center;
   color: white;
   margin: 10px 0;
+  
 }
 
 .green {
@@ -93,10 +94,11 @@ body {
 .inactive {
   border: 2px solid white !important;
 }
-.hidden {
+ .hidden {
   display: none;
-}
+} 
 .title {
+  
   text-align: center;
   color: white;
   margin: 20px 0;
@@ -189,4 +191,5 @@ button {
   .card {
     flex-direction: column;
   }
+  
 }

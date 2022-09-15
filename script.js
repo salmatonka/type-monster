@@ -7,15 +7,15 @@ const modalBackground = document.getElementById("modal-background");
 
 // variables
 let userText = "";
-let errorCount = 0;
-let startTime= " ";
+let errorCount= 0;
+let startTime;
 let questionText = "";
 
 // Load and display question
 fetch("./texts.json")
   .then((res) => res.json())
   .then((data) => {
-    questionText = data[Math.floor(Math.random() * data.length)];
+     questionText = data[Math.floor(Math.random() * data.length)];
     question.innerHTML = questionText;
   });
 
@@ -25,7 +25,9 @@ const typeController = (e) => {
 
   // Handle backspace press
   if (newLetter == "Backspace") {
-    userText = userText.slice(0, userText.length - 1);
+   
+   
+    userText = userText.slice(0, userText.length-1 );
     return display.removeChild(display.lastChild);
   }
 
@@ -79,17 +81,16 @@ const gameOver = () => {
   display.classList.add("inactive");
   // show result
   resultModal.innerHTML += `
-    <h1>Finished!</h1>
+    <h1>!finished</h1>
     <p>You took: <span class="bold">${timeTaken}</span> seconds</p>
     <p>You made <span class="bold red">${errorCount}</span> mistakes</p>
     <button onclick="closeModal()">Close</button>
   `;
 
-  addHistory(questionText, timeTaken, errorCount);
-
+  addHistory(questionText, timeTaken, errorCount);errorCount++
   // restart everything
   startTime = null;
-  errorCount = 0;
+  errorCount =0;
   userText = "";
   display.classList.add("inactive");
 };
@@ -113,14 +114,16 @@ const start = () => {
     if (count == 0) {
       // -------------- START TYPING -----------------
       document.addEventListener("keydown", typeController);
-      countdownOverlay.style.display = "flex";
+      countdownOverlay.style.display = "";
       display.classList.remove("inactive");
 
       clearInterval(startCountdown);
       startTime = new Date().getTime();
     }
     count--;
-  }, 1000);
+    errorCount++;
+  },1000);
+  
 };
 
 // START Countdown
@@ -131,9 +134,12 @@ displayHistory();
 
 // Show typing time spent
 setInterval(() => {
+ 
   const currentTime = new Date().getTime();
   const timeSpent = (currentTime - startTime) / 1000;
 
-
-  document.getElementById("show-time").innerHTML = `${startTime  ? timeSpent : 0} seconds`;
+  
+  document.getElementById("show-time").innerHTML = `${startTime  ?timeSpent : 0} seconds`;
 }, 1000);
+
+
