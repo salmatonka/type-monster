@@ -48,6 +48,7 @@ const typeController = (e) => {
     display.innerHTML += `<span class="green">${newLetter === " " ? "▪" : newLetter}</span>`;
   } else {
     display.innerHTML += `<span class="red">${newLetter === " " ? "▪" : newLetter}</span>`;
+    errorCount++;
   }
 
   // check if given question text is equal to user typed text
@@ -122,7 +123,6 @@ const start = () => {
       startTime = new Date().getTime();
     }
    
-  errorCount++;
     count--; 
   },1000);
  
