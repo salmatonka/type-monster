@@ -194,8 +194,20 @@ button {
   }
 
 }
+/* large device: 3column */
 
+@media only screen and (min-width: 990px) {
+  #histories {
+    display: grid;
+    grid-template-columns: 350px 350px 350px;
+    grid-gap: 25px;
+  }
 
+  .card {
+    flex-direction: column;
+    display: flex;
+  }
 
+}
 
 
