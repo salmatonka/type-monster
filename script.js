@@ -87,10 +87,11 @@ const gameOver = () => {
     <button onclick="closeModal()">Close</button>
   `;
 
-  addHistory(questionText, timeTaken, errorCount);errorCount++
+  addHistory(questionText, timeTaken, errorCount);
+  
   // restart everything
   startTime = null;
-  errorCount =0;
+  errorCount=0;
   userText = "";
   display.classList.add("inactive");
 };
@@ -120,10 +121,12 @@ const start = () => {
       clearInterval(startCountdown);
       startTime = new Date().getTime();
     }
-    count--;
-    errorCount++;
+   
+  errorCount++;
+    count--; 
   },1000);
-  
+ 
+
 };
 
 // START Countdown
@@ -139,7 +142,7 @@ setInterval(() => {
   const timeSpent = (currentTime - startTime) / 1000;
 
   
-  document.getElementById("show-time").innerHTML = `${startTime  ?timeSpent : 0} seconds`;
+  document.getElementById("show-time").innerHTML = `${startTime?timeSpent.toFixed(0) : 0} seconds`;
 }, 1000);
 
 
